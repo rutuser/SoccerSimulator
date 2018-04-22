@@ -45,13 +45,9 @@ function reparto(){ //Se reparte aleatoriamente los goles de cada equipo
 }
 
 function teamWins(equipo1,equipo2){ //acumulando de partidos ganados
-  console.log(equipo1.getGoles());
-  console.log(equipo2.getGoles())
   if(equipo1.goles > equipo2.goles){
-    console.log('hola')
     equipo1.wins++;
   } else if(equipo1.goles < equipo2.goles){
-    console.log('gola')
     equipo2.wins++;
   }
 }
@@ -74,14 +70,11 @@ function randNum(top){ //Funcion que devuelve un num aleatorio hasta el parametr
 
 function newGame(){ // Se dispone el juego
   reparto();
+
   let num = randNum(equipos.length); // Eleccion aleatoria del primer equipo
   let num2 = randNum(equipos.length); // Eleccion aleatoria del segundo equipo
 
-
   teamWins(equipos[num],equipos[num2]);
-
-
-
 
   elements.partido.textContent = equipos[num].getEquipo() + ' ' + equipos[num].getGoles()
    + ' -- ' + equipos[num2].getGoles() + ' ' + equipos[num2].getEquipo();
