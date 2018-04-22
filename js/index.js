@@ -1,6 +1,7 @@
 var elements = {
   partido : document.querySelector('.partido'),
-  boton : document.querySelector('.button')
+  boton : document.querySelector('.button'),
+  resultados : document.querySelector('.resultados')
 }
 
 var equipos = [];
@@ -43,13 +44,28 @@ function reparto(){ //Se reparte aleatoriamente los goles de cada equipo
   }
 }
 
-function ganador(equipo1,equipo2){
-  if(equipo1.getGoles > equipo2.getGoles){
+function teamWins(equipo1,equipo2){ //acumulando de partidos ganados
+  console.log(equipo1.getGoles());
+  console.log(equipo2.getGoles())
+  if(equipo1.goles > equipo2.goles){
+    console.log('hola')
     equipo1.wins++;
-  } else {
+  } else if(equipo1.goles < equipo2.goles){
+    console.log('gola')
     equipo2.wins++;
   }
 }
+/*
+function ganador(equipo1,equipo2){
+  if(equipo1.wins > equipo2.wins){
+
+  } else if (equipo1.wins == equipo2.wins){
+
+  } else {
+
+  }
+}
+*/
 
 function randNum(top){ //Funcion que devuelve un num aleatorio hasta el parametro que se le pase
   let num = Math.floor((Math.random() * top));
@@ -61,14 +77,17 @@ function newGame(){ // Se dispone el juego
   let num = randNum(equipos.length); // Eleccion aleatoria del primer equipo
   let num2 = randNum(equipos.length); // Eleccion aleatoria del segundo equipo
 
-  console.log(num,num2);
-  ganador(equipos[num],equipos[num2]);
-  //console.log(equipos[0].wins,equipos[1].wins,equipos[2].wins,equipos[3].wins);
+
+  teamWins(equipos[num],equipos[num2]);
+
 
 
 
   elements.partido.textContent = equipos[num].getEquipo() + ' ' + equipos[num].getGoles()
    + ' -- ' + equipos[num2].getGoles() + ' ' + equipos[num2].getEquipo();
 
+  elements.resultados.innerHTML = '<ul><li>RealMadrid: ' + equipos[0].getWins()
+   + '</li><li>FCBarcelona: ' + equipos[1].getWins() + '</li><li>AtleticoMadrid: '
+   + equipos[2].getWins() + '</li><li>Manchester: ' + equipos[3].getWins() + '</li></ul>';
 
 }
