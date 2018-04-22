@@ -1,0 +1,11 @@
+.master{
+  background: grey;
+  width: 500px;
+  height: 200px;
+}
+
+.partido{
+  background: brown;
+  width: 80%;
+  height: 80%;
+}
